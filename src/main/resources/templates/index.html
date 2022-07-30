@@ -10,11 +10,25 @@
 <hr>
 
 <h3>Курсы</h3>
-<div th:each="course : ${courses}">
+
+<form th:action="@{/courses}" th:method="GET">
+    <label for="name_course">Введите название курса: </label>
+    <input type="text" name="name_course" id="name_course">
+    <br>
+
+    <input type="submit" value="Поиск">
+</form>
+
+<br>
+
+<div th:if="${!courses.isEmpty()}" th:each="course : ${courses}">
     <b><span th:text="${course.getNameCourse}"></span></b>
     <span th:text="${' ' + course.getPrice()}"></span>
     <span> | </span>
     <a th:href="@{/courses/{id}(id=${course.getId()})}" th:text="Подробнее"></a>
+</div>
+<div th:if="${courses.isEmpty()}">
+    <h3>Курсов нет</h3>
 </div>
 <hr>
 

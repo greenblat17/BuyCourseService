@@ -14,7 +14,8 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping("/courses")
-    public String getAllCourses(Model model, @RequestParam("name_course") String nameCourse) {
+    public String getAllCourses(@RequestParam(value = "name_course", required = false) String nameCourse,
+                                Model model)  {
         model.addAttribute("courses", courseService.findAllCourse(nameCourse));
         model.addAttribute("new_course", new Course());
         return "index";

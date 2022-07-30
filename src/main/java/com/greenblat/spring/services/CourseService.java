@@ -3,6 +3,7 @@ package com.greenblat.spring.services;
 import com.greenblat.spring.models.Course;
 import com.greenblat.spring.repositories.CourseRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
+@Slf4j
 @RequiredArgsConstructor
 public class CourseService {
 
@@ -21,12 +23,13 @@ public class CourseService {
 
     public List<Course> findAllCourse(String nameCourse) {
         if (nameCourse != null)
-            return courseRepository.findByNameCourse(nameCourse);
+            return courseRepository.findByNameCourseStartingWith(nameCourse);
         return courseRepository.findAll();
     }
 
     @Transactional
     public void saveCourse(Course course) {
+        log.info("Saving new {}", course);
         courseRepository.save(course);
     }
 
