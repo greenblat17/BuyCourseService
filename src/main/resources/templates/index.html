@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<h1>Buy Course Service</h1>
+<hr>
+
+<h3>Курсы</h3>
+<div th:each="course : ${courses}">
+    <b><span th:text="${course.getNameCourse}"></span></b>
+    <span th:text="${' ' + course.getPrice()}"></span>
+    <span> | </span>
+    <a th:href="@{/courses/{id}(id=${course.getId()})}" th:text="Подробнее"></a>
+</div>
+<hr>
+
+<h3>Добавить новый курс</h3>
+<form th:action="@{/courses}" th:method="POST" th:object="${new_course}">
+
+    <label for="name">Название курса: </label>
+    <input type="text" th:field="*{nameCourse}" id="name">
+    <br><br>
+
+    <label for="description">Введите автора: </label>
+    <input type="text" th:field="*{description}" id="description">
+    <br><br>
+
+    <label for="price">Введите цену: </label>
+    <input type="text" th:field="*{price}" id="price">
+    <br><br>
+
+    <input type="submit" value="Добавить">
+</form>
+
+</body>
+</html>
