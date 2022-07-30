@@ -19,7 +19,9 @@ public class CourseService {
         return courseRepository.findById(id).orElse(null);
     }
 
-    public List<Course> findAllCourse() {
+    public List<Course> findAllCourse(String nameCourse) {
+        if (nameCourse != null)
+            return courseRepository.findByNameCourse(nameCourse);
         return courseRepository.findAll();
     }
 
