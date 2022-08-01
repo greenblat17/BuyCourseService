@@ -23,6 +23,9 @@
 <span th:text="${course.getPrice()}"></span>
 <br>
 
+<div>
+    <img th:src="@{/img/{image}(image = ${course.getImageName()})}" alt="Картинка не загружена">
+
 <hr>
 
 <form th:method="DELETE" th:object="${course}" th:action="@{/courses/{id}(id=${course.getId()})}">

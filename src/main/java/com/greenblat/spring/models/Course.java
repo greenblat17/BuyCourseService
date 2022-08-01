@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -26,5 +27,16 @@ public class Course {
 
     @Column(name = "price")
     private Integer price;
+
+    @Column(name = "image")
+    private String imageName;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    public void init() {
+        createdAt = LocalDateTime.now();
+    }
 
 }

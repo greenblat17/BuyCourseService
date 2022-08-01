@@ -10,4 +10,6 @@ public class BuyCourseServiceApplication {
         SpringApplication.run(BuyCourseServiceApplication.class, args);
     }
 
+
+
 }

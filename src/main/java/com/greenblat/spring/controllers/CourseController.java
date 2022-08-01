@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,8 +25,8 @@ public class CourseController {
     }
 
     @PostMapping("/courses/add")
-    public String addCourse(@ModelAttribute("new_course") Course course) {
-        courseService.saveCourse(course);
+    public String addCourse(@ModelAttribute("new_course") Course course, @RequestParam("file") MultipartFile file) throws IOException {
+        courseService.saveCourse(course, file);
         return "redirect:/courses";
     }
 

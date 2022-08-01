@@ -33,18 +33,22 @@
 <hr>
 
 <h3>Добавить новый курс</h3>
-<form th:action="@{/courses}" th:method="POST" th:object="${new_course}">
+<form th:action="@{/courses/add}" th:method="POST" th:object="${new_course}" enctype="multipart/form-data">
 
     <label for="name">Название курса: </label>
     <input type="text" th:field="*{nameCourse}" id="name">
     <br><br>
 
-    <label for="description">Введите автора: </label>
+    <label for="description">Введите описание: </label>
     <input type="text" th:field="*{description}" id="description">
     <br><br>
 
     <label for="price">Введите цену: </label>
     <input type="text" th:field="*{price}" id="price">
+    <br><br>
+
+    <label for="image">Загрузить фотографию: </label>
+    <input type="file" name="file" id="image">
     <br><br>
 
     <input type="submit" value="Добавить">
