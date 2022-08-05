@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+
+<h1>Buy Course Service</h1>
+<hr>
+
+<h4>Регистрация</h4>
+<form action="/registration" method="POST" >
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+
+    <label for="name">Имя пользователя: </label>
+    <input type="text"  name="name" id="name"><br><br>
+
+    <label for="email">Почта: </label>
+    <input type="email" name="email" id="email">
+    <br><br>
+
+    <label for="password">Пароль: </label>
+    <input type="password" name="password" id="password">
+    <br><br>
+
+    <input type="submit" value="Вход"/>
+</form>
+
+</body>
+</html>

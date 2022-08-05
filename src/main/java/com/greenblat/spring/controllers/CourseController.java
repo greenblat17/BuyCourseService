@@ -21,7 +21,7 @@ public class CourseController {
                                 Model model)  {
         model.addAttribute("courses", courseService.findAllCourse(nameCourse));
         model.addAttribute("new_course", new Course());
-        return "index";
+        return "courses/index";
     }
 
     @PostMapping("/courses/add")
@@ -33,7 +33,7 @@ public class CourseController {
     @GetMapping("/courses/{id}")
     public String getCourseInfo(@PathVariable("id") int id, Model model) {
         model.addAttribute("course", courseService.findOneCourse(id));
-        return "show";
+        return "courses/show";
     }
 
     @DeleteMapping("/courses/{id}")
