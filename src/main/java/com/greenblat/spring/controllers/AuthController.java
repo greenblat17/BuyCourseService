@@ -5,12 +5,13 @@ import com.greenblat.spring.services.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
 public class AuthController {
-    private final PersonService userService;
+    private final PersonService personService;
 
     @GetMapping("/login")
     public String login() {
@@ -18,14 +19,14 @@ public class AuthController {
     }
 
     @GetMapping("/registration")
-    public String registration() {
+    public String registration(@ModelAttribute("person") Person person) {
         return "auth/registration";
     }
 
 
     @PostMapping("/registration")
-    public String createUser(Person user) {
-        userService.savePerson(user);
+    public String performRegistration(@ModelAttribute("person") Person person) {
+        personService.savePerson(person);
         return "redirect:/login";
     }
 

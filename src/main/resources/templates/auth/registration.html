@@ -10,18 +10,18 @@
 <hr>
 
 <h4>Регистрация</h4>
-<form action="/registration" method="POST" >
+<form th:action="@{/registration}" th:method="POST" th:object="${person}">
     <input type="hidden" name="_csrf" value="${_csrf.token}">
 
     <label for="name">Имя пользователя: </label>
-    <input type="text"  name="name" id="name"><br><br>
+    <input type="text" th:field="*{name}" id="name"><br><br>
 
     <label for="email">Почта: </label>
-    <input type="email" name="email" id="email">
+    <input type="email" th:field="*{email}" id="email">
     <br><br>
 
     <label for="password">Пароль: </label>
-    <input type="password" name="password" id="password">
+    <input type="password" th:field="*{password}" id="password">
     <br><br>
 
     <input type="submit" value="Вход"/>
